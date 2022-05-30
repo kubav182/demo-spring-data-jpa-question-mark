@@ -1,0 +1,28 @@
+# Getting Started
+
+Project shows the use of question mark in sql while working with postgres and jsonb.
+
+Project uses Java 17, Spring Boot 2.6.0, test containers and gradle wrapper.
+
+You can find 3 repository implementations in different profiles, jpa, jdbc and data jpa.
+JDBC uses ?? and jpa \\?\\?. It works but data jpa does not work.
+
+./gradlew clean build or run tests in IDE
+
+Actual output:
+
+DataJpaRepositoryTest > contextLoads() FAILED
+java.lang.IllegalStateException at DefaultCacheAwareContextLoaderDelegate.java:132
+Caused by: org.springframework.beans.factory.BeanCreationException at AbstractAutowireCapableBeanFactory.java:1804
+Caused by: org.springframework.data.repository.query.QueryCreationException at QueryCreationException.java:101
+Caused by: java.lang.IllegalArgumentException at StringQuery.java:281
+Caused by: org.springframework.beans.factory.BeanCreationException at AbstractAutowireCapableBeanFactory.java:1804
+
+            Caused by: org.springframework.data.repository.query.QueryCreationException at QueryCreationException.java:101
+
+                Caused by: java.lang.IllegalArgumentException at StringQuery.java:281
+
+
+JdbcRepositoryTest > contextLoads() PASSED
+
+JpaRepositoryTest > contextLoads() PASSED
