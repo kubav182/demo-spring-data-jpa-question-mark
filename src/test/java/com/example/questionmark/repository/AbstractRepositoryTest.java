@@ -24,7 +24,7 @@ abstract class AbstractRepositoryTest {
     PetRepository petRepository;
 
     @Test
-    void contextLoads() {
+    void shouldFindOnePetByBlueColourTest() {
         List<Pet> bluePets = petRepository.findAllByColour("blue");
         Assertions.assertEquals(1, bluePets.size());
         Assertions.assertEquals("Paul", bluePets.get(0).getName());
